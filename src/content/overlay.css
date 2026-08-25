@@ -1,0 +1,570 @@
+/* overlay.css - אמת (Emet) - פאנל RTL */
+
+#emet-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 380px;
+  max-height: 94vh;
+  min-width: 320px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  background: #111318;
+  color: #e7e9ee;
+  border: 1px solid #2a2e3a;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  z-index: 2147483647;
+  font-family: -apple-system, "Segoe UI", Roboto, "Heebo", Arial, sans-serif;
+  font-size: 13px;
+  direction: rtl;
+  text-align: right;
+  overflow: hidden;
+  /* גרירה מהפינה לשינוי גודל - הגלילה בתוך גוף הפאנל */
+  resize: both;
+}
+
+#emet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #191c24;
+  border-bottom: 1px solid #2a2e3a;
+  cursor: grab;
+  font-weight: 700;
+  font-size: 14px;
+  user-select: none;
+}
+
+#emet-tagline {
+  padding: 4px 14px 6px;
+  background: #191c24;
+  border-bottom: 1px solid #2a2e3a;
+  font-size: 10px;
+  color: #8b91a0;
+  user-select: none;
+}
+
+.emet-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  margin-left: 8px;
+  animation: emet-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes emet-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.emet-dot--warn  { background: #f59e0b; }
+.emet-dot--error { background: #ef4444; animation: none; }
+
+#emet-attribution {
+  display: block;
+  text-align: center;
+  font-size: 10.5px;
+  color: #6b7280;
+  text-decoration: none;
+  padding: 6px 0 2px;
+  border-top: 1px solid #232835;
+}
+
+#emet-attribution:hover { color: #60a5fa; text-decoration: underline; }
+
+/* ── כרטיס מיצוי מכסה ── */
+
+.emet-quota-card {
+  background: #1d2330;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.emet-quota-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fbbf24;
+  margin-bottom: 8px;
+}
+
+.emet-quota-text {
+  font-size: 12.5px;
+  color: #cfd3dc;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.emet-quota-steps {
+  margin: 0 18px 8px 0;
+  padding: 0;
+  font-size: 12.5px;
+  color: #cfd3dc;
+  line-height: 1.7;
+}
+
+.emet-quota-steps a { color: #60a5fa; }
+
+/* ── לוח תוצאות ── */
+
+#emet-summary {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.emet-sum {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.emet-sum--green  { background: rgba(34, 197, 94, 0.15);  color: #4ade80; }
+.emet-sum--teal   { background: rgba(20, 184, 166, 0.15); color: #2dd4bf; }
+.emet-sum--red    { background: rgba(239, 68, 68, 0.15);  color: #f87171; }
+.emet-sum--yellow { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+
+.emet-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.emet-header-actions button {
+  background: #262b37;
+  color: #cfd3dc;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.emet-header-actions button:hover {
+  background: #323949;
+}
+
+#emet-body {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding: 10px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emet-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.emet-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #8b91a0;
+}
+
+.emet-toggle-btn {
+  background: none;
+  border: none;
+  color: #8b91a0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#emet-transcript-feed {
+  max-height: 110px;
+  overflow-y: auto;
+  line-height: 1.7;
+  color: #b9bec9;
+  font-size: 12.5px;
+}
+
+#emet-interim {
+  color: #6b7280;
+  font-style: italic;
+  font-size: 12px;
+  min-height: 16px;
+  margin: 4px 0 0;
+}
+
+#emet-claim-feed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.emet-claim-bullet {
+  font-size: 12px;
+  padding: 4px 10px 4px 8px;
+  border-right: 3px solid #4b5563;
+  background: #181c25;
+  border-radius: 4px;
+  color: #c6cad4;
+}
+
+.emet-claim-bullet--pending { border-right-color: #6b7280; opacity: 0.8; }
+.emet-claim-bullet--green   { border-right-color: #22c55e; }
+.emet-claim-bullet--teal    { border-right-color: #14b8a6; }
+.emet-claim-bullet--red     { border-right-color: #ef4444; }
+.emet-claim-bullet--yellow  { border-right-color: #f59e0b; }
+.emet-claim-bullet--grey    { border-right-color: #6b7280; }
+
+#emet-verdicts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emet-empty {
+  color: #6b7280;
+  font-size: 12px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.emet-verdict {
+  position: relative;
+  background: #181c25;
+  border: 1px solid #262b37;
+  border-right-width: 4px;
+  border-radius: 10px;
+  padding: 12px 12px 10px;
+}
+
+.emet-verdict--green  { border-right-color: #22c55e; }
+.emet-verdict--teal   { border-right-color: #14b8a6; }
+.emet-verdict--red    { border-right-color: #ef4444; }
+.emet-verdict--yellow { border-right-color: #f59e0b; }
+.emet-verdict--grey   { border-right-color: #6b7280; }
+
+.emet-verdict--pending { opacity: 0.75; }
+
+.emet-verdict-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.emet-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.emet-badge--green  { background: rgba(34, 197, 94, 0.15);  color: #4ade80; }
+.emet-badge--teal   { background: rgba(20, 184, 166, 0.15); color: #2dd4bf; }
+.emet-badge--red    { background: rgba(239, 68, 68, 0.15);  color: #f87171; }
+.emet-badge--yellow { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.emet-badge--grey   { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+.emet-verifying {
+  font-size: 11px;
+  color: #8b91a0;
+}
+
+.emet-confidence-right {
+  font-size: 10.5px;
+  color: #8b91a0;
+}
+
+.emet-timestamp {
+  font-size: 10.5px;
+  color: #6b7280;
+  margin-right: auto;
+  direction: ltr;
+}
+
+.emet-claim {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #e7e9ee;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.emet-explanation {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: #aab0bc;
+  line-height: 1.55;
+}
+
+.emet-speaker-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.emet-speaker-confidence {
+  border-top: 1px solid #232835;
+  padding-top: 6px;
+}
+
+.emet-speaker-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #8b91a0;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.emet-speaker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.emet-speaker-dot--green  { background: #22c55e; }
+.emet-speaker-dot--yellow { background: #f59e0b; }
+.emet-speaker-dot--red    { background: #ef4444; }
+
+.emet-speaker-arrow { font-size: 10px; }
+
+.emet-speaker-explanation {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.emet-conviction-row {
+  font-size: 11px;
+  color: #8b91a0;
+}
+
+.emet-conviction-label {
+  font-weight: 700;
+  color: #aab0bc;
+}
+
+.emet-disclaimer {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #8b91a0;
+}
+
+.emet-sources {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.emet-sources-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #aab0bc;
+}
+
+.emet-sources a {
+  font-size: 12px;
+  font-weight: 600;
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.emet-sources a:hover { text-decoration: underline; }
+
+.emet-source-text { font-size: 11px; color: #8b91a0; }
+
+/* ── מזעור פסיקות ── */
+
+.emet-min-btn {
+  background: none;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.emet-min-btn:hover { color: #cfd3dc; }
+
+.emet-verdict--min { padding: 7px 12px; }
+
+.emet-verdict--min .emet-explanation,
+.emet-verdict--min .emet-speaker-confidence,
+.emet-verdict--min .emet-disclaimer,
+.emet-verdict--min .emet-sources,
+.emet-verdict--min .emet-speaker-tag,
+.emet-verdict--min .emet-confidence-right {
+  display: none;
+}
+
+.emet-verdict--min .emet-verdict-header { margin-bottom: 3px; }
+
+.emet-verdict--min .emet-claim {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  color: #aab0bc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.emet-timestamp--link { cursor: pointer; }
+.emet-timestamp--link:hover { color: #60a5fa; text-decoration: underline; }
+
+/* ── הסתרה והחזרה של פסיקות ── */
+
+.emet-hide-btn {
+  background: none;
+  border: none;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.emet-hide-btn:hover { color: #cfd3dc; }
+
+.emet-verdict--hidden { display: none; }
+
+#emet-verdicts.emet-show-hidden .emet-verdict--hidden {
+  display: block;
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+#emet-hidden-bar {
+  background: none;
+  border: 1px dashed #3a4256;
+  color: #8b91a0;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 6px;
+  font-family: inherit;
+}
+
+#emet-hidden-bar:hover { color: #cfd3dc; border-color: #4b5563; }
+
+/* ── באנר דובר חדש ── */
+
+.emet-speaker-banner {
+  background: #1d2330;
+  border: 1px solid #334;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.emet-speaker-banner-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e7e9ee;
+}
+
+.emet-speaker-banner-sample {
+  font-size: 11.5px;
+  color: #8b91a0;
+  font-style: italic;
+}
+
+.emet-speaker-banner-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.emet-speaker-banner-btn {
+  background: #2b3242;
+  color: #dfe3ea;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.emet-speaker-banner-btn:hover { background: #3a4256; }
+
+.emet-speaker-banner-btn--skip {
+  background: transparent;
+  color: #8b91a0;
+}
+
+/* ── עריכת דוברים ── */
+
+#emet-speaker-editor {
+  display: flex;
+  gap: 6px;
+}
+
+.emet-speaker-chip {
+  display: inline-flex;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.emet-speaker-chip-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  font-weight: 700;
+  width: 64px;
+  text-align: center;
+  direction: rtl;
+}
+
+/* ── הודעת שגיאה ── */
+
+.emet-error-toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #3a1d1d;
+  border-bottom: 1px solid #5b2626;
+  color: #fca5a5;
+  padding: 8px 14px;
+  font-size: 12px;
+}
+
+.emet-error-msg { flex: 1; }
+
+.emet-error-close {
+  background: none;
+  border: none;
+  color: #fca5a5;
+  cursor: pointer;
+  font-size: 12px;
+}

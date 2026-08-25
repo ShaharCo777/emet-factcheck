@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>מדיניות פרטיות - Emet</title>
+<style>
+  :root { --ink:#1a1a1a; --mute:#5c6470; --line:#e3e6ea; --accent:#0b5cab; --warn:#8a5a00; --warnbg:#fff8e6; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:2.5rem 1.25rem 5rem; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+         line-height:1.75; color:var(--ink); background:#fff; }
+  main { max-width:44rem; margin:0 auto; }
+  h1 { font-size:1.9rem; margin:0 0 .3rem; letter-spacing:-.01em; }
+  h2 { font-size:1.15rem; margin:2.4rem 0 .7rem; padding-bottom:.4rem; border-bottom:1px solid var(--line); }
+  .updated { color:var(--mute); font-size:.9rem; margin:0 0 2rem; }
+  .lede { background:#f5f7f9; border-inline-start:3px solid var(--accent); padding:1rem 1.1rem; border-radius:6px; margin:0 0 1rem; }
+  table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:.94rem; }
+  th,td { text-align:right; padding:.6rem .7rem; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#f7f9fa; font-weight:600; }
+  ul { padding-inline-start:1.3rem; }
+  li { margin:.35rem 0; }
+  code { background:#f1f3f5; padding:.12em .4em; border-radius:4px; font-size:.88em; direction:ltr; display:inline-block; }
+  a { color:var(--accent); }
+  .note { background:var(--warnbg); border-inline-start:3px solid var(--warn); padding:.85rem 1.05rem; border-radius:6px; margin:1rem 0; font-size:.95rem; }
+  hr { border:0; border-top:1px solid var(--line); margin:3.5rem 0 2rem; }
+  .en { direction:ltr; text-align:left; }
+  .en th, .en td { text-align:left; }
+  .en ul { padding-inline-start:1.3rem; }
+  footer { margin-top:3rem; color:var(--mute); font-size:.85rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>מדיניות פרטיות - Emet</h1>
+<p class="updated">עודכן לאחרונה: 20 באוגוסט 2026 · חל על גרסה 2.2.3 ואילך</p>
+
+<p class="lede">
+Emet ("אמת") הוא תוסף דפדפן שמתמלל בזמן אמת את השמע של הטאב שאתם צופים בו, מזהה בו טענות עובדתיות, ומציג הערכה עם קישורים למקורות. המסמך הזה מסביר בדיוק אילו נתונים עוברים לאן. <strong>איננו יוצרים לכם חשבון, איננו מזהים אתכם, ואיננו שומרים את השמע או את התמלול שלכם.</strong>
+</p>
+
+<h2>שני מצבי הפעלה - ההבדל חשוב</h2>
+
+<p>לתוסף שני מצבים, והנתונים זורמים בהם אחרת:</p>
+
+<ul>
+  <li><strong>שירות משותף (ברירת המחדל).</strong> כדי שלא תצטרכו להשיג מפתחות בעצמכם, הבקשות עוברות דרך שרת ביניים שאנחנו מפעילים - Cloudflare Worker בכתובת <code>emet-proxy.emet.workers.dev</code> - שמחזיק את מפתחות ה-API שלנו ומעביר את הבקשה הלאה לספקים. במצב הזה השמע והתמלול שלכם <em>כן</em> עוברים דרך שרת שבשליטתנו.</li>
+  <li><strong>מפתח משלכם (הגדרות מתקדמות).</strong> אם בחרתם מודל והזנתם מפתח API משלכם, הבקשות עוברות <em>ישירות</em> מהדפדפן שלכם אל הספק. במצב הזה השרת שלנו אינו מעורב כלל ואינו רואה דבר.</li>
+</ul>
+
+<h2>מה נשמר במכשיר שלכם בלבד</h2>
+<ul>
+  <li><strong>מפתחות ה-API שלכם</strong>, אם בחרתם להזין כאלה (Google AI / Deepgram / Anthropic / Groq / Bright Data), נשמרים אך ורק ב-<code>chrome.storage.local</code>. הם לעולם אינם נשלחים אלינו, ולא לאף גורם מלבד הספק שאליו הם שייכים.</li>
+  <li><strong>העדפות</strong> - המודל שבחרתם, מיקום וגודל הפאנל, כרטיסים שהסתרתם.</li>
+  <li><strong>מונה שימוש יומי</strong> - מספר הדקות שנוצלו היום, לצורך אכיפת המכסה החינמית. מספר בלבד, ללא היסטוריה של מה שצפיתם בו.</li>
+  <li><strong>מצב הסשן</strong> - הטאב הפעיל וכותרת התוכן, ב-<code>chrome.storage.session</code>. נמחק כשעוצרים את הבדיקה או סוגרים את הדפדפן.</li>
+</ul>
+
+<h2>מה נשלח, לאן, ומתי</h2>
+
+<p>שום דבר אינו נשלח לפני שלחצתם "התחל בדיקת עובדות". מרגע זה ועד שתעצרו:</p>
+
+<table>
+  <thead><tr><th>מה</th><th>לאן - בשירות המשותף</th><th>לאן - עם מפתח משלכם</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>קטעי שמע של הטאב</td>
+      <td>לשרת שלנו, ומשם ל-Groq (Whisper) לתמלול</td>
+      <td>ישירות ל-Deepgram או ל-Google AI</td>
+    </tr>
+    <tr>
+      <td>קטעי תמלול וכותרת התוכן</td>
+      <td>לשרת שלנו, ומשם ל-Google Gemini או ל-Groq</td>
+      <td>ישירות ל-Google AI / Anthropic / Groq</td>
+    </tr>
+    <tr>
+      <td>שאילתות חיפוש ראיות</td>
+      <td>לשרת שלנו, ומשם ל-Serper (תוצאות Google, אזור ישראל)</td>
+      <td>לחיפוש המובנה במודל, או ל-Bright Data</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>מה השרת שלנו רואה, ומה הוא שומר</h2>
+
+<p>השרת המשותף הוא מעביר בקשות, לא מסד נתונים. באופן קונקרטי:</p>
+
+<ul>
+  <li><strong>איננו כותבים לדיסק את השמע, את התמלול או את הפסיקות.</strong> כל בקשה מעובדת ונשכחת. אין לנו דרך לשחזר במה צפיתם או מה נאמר.</li>
+  <li><strong>אין שום מזהה משתמש.</strong> הבקשות אינן נושאות שם, מייל, חשבון או מזהה מכשיר, ואין לנו דרך לקשור בקשות של אותו אדם זו לזו.</li>
+  <li><strong>כתובת ה-IP שלכם משמשת להגבלת קצב בלבד.</strong> Cloudflare מוסרת אותה לשרת, והוא מגדיל בעזרתה מונה יומי כדי שמשתמש בודד לא ימצה את התקציב של כולם. המונה נמחק אוטומטית אחרי 48 שעות. הוא אינו מקושר לתוכן כלשהו, ואיננו משתמשים בו לזיהוי, לפילוח או לפרסום.</li>
+  <li><strong>אין cookies, אין פיקסלים, אין אנליטיקס, אין מעקב</strong> - לא בתוסף ולא בשרת.</li>
+</ul>
+
+<div class="note">
+<strong>שקוף עד הסוף:</strong> השירות המשותף פירושו שהשמע של הטאב עובר דרך תשתית שבשליטתנו. אנחנו לא שומרים אותו - אבל אם אתם מעדיפים שהוא לא יעבור דרכנו בכלל, פתחו את «הגדרות מתקדמות» בתוסף, בחרו מודל Gemini והזינו מפתח Google AI חינמי משלכם. מאותו רגע התקשורת היא ישירה בינכם לבין Google, והשרת שלנו מנותק מהתמונה לחלוטין.
+</div>
+
+<h2>מה איננו עושים</h2>
+<ul>
+  <li>איננו מוכרים ואיננו משתפים נתונים. אין לנו נתונים למכור.</li>
+  <li>איננו משתמשים בנתונים שלכם למטרה כלשהי מלבד הפעלת התוסף עצמו.</li>
+  <li>איננו משתמשים בנתונים לקביעת כושר אשראי או לצורכי הלוואות.</li>
+  <li>איננו אוספים היסטוריית גלישה. התוסף פועל רק בעמוד שבו הפעלתם אותו במפורש.</li>
+  <li>איננו מאמנים מודלים על התוכן שלכם.</li>
+</ul>
+
+<h2>שירותי צד שלישי</h2>
+<p>העיבוד בפועל מתבצע אצל ספקים חיצוניים, שכל אחד כפוף למדיניות שלו:</p>
+<ul>
+  <li><a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Google AI / Gemini</a></li>
+  <li><a href="https://groq.com/privacy-policy/" rel="noopener">Groq</a> - תמלול Whisper ומודל שפה</li>
+  <li><a href="https://serper.dev/privacy-policy" rel="noopener">Serper</a> - תוצאות חיפוש</li>
+  <li><a href="https://deepgram.com/privacy" rel="noopener">Deepgram</a> - רק במצב מפתח משלכם</li>
+  <li><a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic</a> - רק במצב מפתח משלכם</li>
+  <li><a href="https://brightdata.com/privacy" rel="noopener">Bright Data</a> - רק במצב מפתח משלכם</li>
+  <li><a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare</a> - התשתית שעליה רץ שרת הביניים</li>
+</ul>
+
+<h2>הרשאות ולמה הן נדרשות</h2>
+<ul>
+  <li><strong>tabCapture</strong> - לכידת השמע של הטאב, רק אחרי לחיצה מפורשת על "התחל בדיקת עובדות".</li>
+  <li><strong>offscreen</strong> - עיבוד השמע ברקע. ב-Manifest V3 אין גישה ל-Web Audio API מתוך service worker.</li>
+  <li><strong>storage</strong> - שמירת ההעדפות והמפתחות שלכם מקומית.</li>
+  <li><strong>activeTab</strong> - הצגת פאנל התוצאות בעמוד שאתם צופים בו, וקריאת כותרת העמוד לזיהוי הדוברים.</li>
+</ul>
+
+<h2>ילדים</h2>
+<p>התוסף אינו מיועד לילדים מתחת לגיל 13 ואינו אוסף מהם מידע ביודעין.</p>
+
+<h2>שינויים במדיניות</h2>
+<p>אם נשנה את אופן הטיפול בנתונים, נעדכן את המסמך הזה ואת תאריך העדכון שבראשו, ונודיע על כך בתוך התוסף לפני שהשינוי ייכנס לתוקף.</p>
+
+<h2>הצהרת עמידה במדיניות</h2>
+<p>השימוש שלנו בנתונים המתקבלים מממשקי Chrome, ושליחתם לגורמים אחרים, עומד ב-<a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq" rel="noopener">Chrome Web Store User Data Policy</a>, לרבות דרישות ה-Limited Use.</p>
+
+<h2>יצירת קשר</h2>
+<p>לשאלות בנוגע למדיניות הזו - פתחו issue בעמוד הפרויקט ב-GitHub.</p>
+
+<hr>
+
+<div class="en">
+<h1>Privacy Policy - Emet</h1>
+<p class="updated">Last updated: 20 August 2026 · Applies to version 2.2.3 and later</p>
+
+<p>Emet is a browser extension that transcribes the audio of the tab you are watching, identifies factual claims in the Hebrew speech, and displays an assessment with links to sources. <strong>We do not create an account for you, do not identify you, and do not store your audio or transcripts.</strong></p>
+
+<h2>Two modes</h2>
+<ul>
+  <li><strong>Shared service (default).</strong> So that you don't need API keys of your own, requests are relayed through a Cloudflare Worker we operate at <code>emet-proxy.emet.workers.dev</code>, which holds our provider keys and forwards to Groq (Whisper transcription and LLM), Google Gemini, and Serper (Google search results, region IL). In this mode your audio and transcripts do pass through infrastructure we control.</li>
+  <li><strong>Your own key (Advanced settings).</strong> If you select a model and enter your own API key, requests go directly from your browser to that provider. Our server is not involved and sees nothing.</li>
+</ul>
+
+<h2>Stored on your device only</h2>
+<ul>
+  <li>Your API keys, if you supply any, in <code>chrome.storage.local</code>. Never sent to us, and never to anyone other than the provider each key belongs to.</li>
+  <li>Preferences: chosen model, panel position and size, hidden cards.</li>
+  <li>A daily usage-minutes counter, used to enforce the free quota. A number only - no history of what you watched.</li>
+  <li>Session state (active tab, content title) in <code>chrome.storage.session</code>, cleared when you stop or close the browser.</li>
+</ul>
+
+<h2>What is sent, and when</h2>
+<p>Nothing is sent before you click "Start fact-checking". From then until you stop: tab audio chunks go to the transcription service; transcript segments and the page title go to the language model for claim detection and verification; search queries go to the evidence-search service. In the default mode these are relayed via our Worker; in bring-your-own-key mode they go directly to the provider you chose.</p>
+
+<h2>What our server sees and keeps</h2>
+<ul>
+  <li><strong>Audio, transcripts and verdicts are never written to disk.</strong> Each request is processed and forgotten. We have no way to reconstruct what you watched or what was said.</li>
+  <li><strong>There is no user identifier.</strong> Requests carry no name, email, account or device ID, and we cannot link one person's requests together.</li>
+  <li><strong>Your IP address is used for rate limiting only.</strong> Cloudflare supplies it, and the server uses it to increment a daily counter so a single user cannot exhaust the shared budget. That counter expires automatically after 48 hours. It is not linked to any content and is not used for identification, profiling or advertising.</li>
+  <li><strong>No cookies, pixels, analytics or tracking</strong> - in the extension or on the server.</li>
+</ul>
+
+<h2>What we do not do</h2>
+<p>We do not sell or share data - we have none to sell. We do not use your data for any purpose other than operating the extension. We do not use it to determine creditworthiness or for lending purposes. We do not collect browsing history: the extension runs only on the page where you explicitly started it. We do not train models on your content.</p>
+
+<h2>Third-party services</h2>
+<p><a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Google AI / Gemini</a> · <a href="https://groq.com/privacy-policy/" rel="noopener">Groq</a> · <a href="https://serper.dev/privacy-policy" rel="noopener">Serper</a> · <a href="https://deepgram.com/privacy" rel="noopener">Deepgram</a> · <a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic</a> · <a href="https://brightdata.com/privacy" rel="noopener">Bright Data</a> · <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare</a></p>
+
+<h2>Permissions</h2>
+<p><strong>tabCapture</strong> - capture tab audio, only after you click Start. <strong>offscreen</strong> - process audio in the background; MV3 service workers cannot access the Web Audio API. <strong>storage</strong> - save your keys and preferences locally. <strong>activeTab</strong> - inject the results panel into the page you are watching and read its title to identify speakers.</p>
+
+<h2>Children</h2>
+<p>The extension is not directed at children under 13 and does not knowingly collect information from them.</p>
+
+<h2>Changes</h2>
+<p>If we change how data is handled, we will update this document and the date above, and notify you inside the extension before the change takes effect.</p>
+
+<h2>Compliance statement</h2>
+<p>Our use of information received from Chrome APIs, and our transfer of that information to any other party, adheres to the <a href="https://developer.chrome.com/docs/webstore/program-policies/user-data-faq" rel="noopener">Chrome Web Store User Data Policy</a>, including the Limited Use requirements.</p>
+
+<h2>Contact</h2>
+<p>For questions about this policy, open an issue on the project's GitHub page.</p>
+</div>
+
+<footer>Emet - בדיקת עובדות בזמן אמת בעברית</footer>
+</main>
+</body>
+</html>

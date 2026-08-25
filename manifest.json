@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Emet - בדיקת עובדות עם AI בעברית: מחפש ביסוס לטענות בחדשות ובראיונות",
+  "version": "2.3.3",
+  "description": "AI שמאתר טענות עובדתיות בעברית ביוטיוב ובחדשות ומחפש להן ביסוס ומקורות. תמלול חי. בלי הרשמה. פלט אוטומטי - בדקו מקורות.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabCapture",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://api.groq.com/*",
+    "https://api.brightdata.com/*",
+    "https://api.deepgram.com/*",
+    "wss://api.deepgram.com/*",
+    "https://*.workers.dev/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://mako.co.il/*",
+        "https://*.mako.co.il/*",
+        "https://ynet.co.il/*",
+        "https://*.ynet.co.il/*",
+        "https://13tv.co.il/*",
+        "https://*.13tv.co.il/*",
+        "https://kan.org.il/*",
+        "https://*.kan.org.il/*",
+        "https://now14.co.il/*",
+        "https://*.now14.co.il/*",
+        "https://walla.co.il/*",
+        "https://*.walla.co.il/*"
+      ],
+      "js": [
+        "src/content/lexical-features.js",
+        "src/content/session-export.js",
+        "src/content/overlay.js"
+      ],
+      "css": [
+        "src/content/overlay.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

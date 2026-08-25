@@ -1,0 +1,8 @@
+# build artifacts
+*.zip
+
+# OS
+.DS_Store
+
+# node (not used, but just in case)
+node_modules/

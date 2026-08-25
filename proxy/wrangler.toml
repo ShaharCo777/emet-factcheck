@@ -1,0 +1,11 @@
+name = "emet-proxy"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# הגבלת קצב + תקרת הוצאה (מופעל):
+[[kv_namespaces]]
+binding = "EMET_KV"
+id = "b44551fba93d45199efcdc8bf932935f"
+
+# הסודות (GROQ_API_KEY, SERPER_API_KEY) לא נשמרים כאן -
+# מגדירים אותם דרך: npx wrangler secret put GROQ_API_KEY
