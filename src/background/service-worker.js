@@ -7,9 +7,9 @@ const HOSTED_PROXY_URL = 'https://emet-proxy.emet.workers.dev';
 // קישור קרדיט שמופיע בתוסף (LinkedIn / אתר אישי / כל דבר).
 const ATTRIBUTION_URL  = 'https://www.linkedin.com/in/shahar-cohen-pm/';
 const ATTRIBUTION_TEXT = 'נבנה ע״י שחר כהן';
-// מכסת זמן יומית חינם במצב המארח (בשניות). מעבר לזה - המשתמש מתבקש להוסיף מפתח.
+// מכסת זמן יומית במצב המארח (בשניות). מעבר לזה - המשתמש מתבקש להוסיף מפתח.
 const HOSTED_DAILY_LIMIT_SEC = 30 * 60;
-// קישור למדריך השגת מפתח חינמי (מוצג כשנגמרת המכסה).
+// קישור למדריך השגת מפתח (מוצג כשנגמרת המכסה).
 const KEY_HELP_URL = 'https://aistudio.google.com/apikey';
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -269,7 +269,7 @@ function stripFences(raw) {
   return (raw || '').replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
 }
 
-const RATE_LIMIT_MSG = 'מגבלת הקצב של המודל הושגה (429) - במודלים חינמיים זה קורה בשידור עמוס. המתינו כדקה או עברו למודל אחר.';
+const RATE_LIMIT_MSG = 'מגבלת הקצב של המודל הושגה (429) - זה קורה בשידור עמוס. המתינו כדקה או עברו למודל אחר.';
 
 function anthropicHeaders() {
   return {
@@ -428,7 +428,7 @@ async function callGeminiWithSearch(model, userMessage, systemPrompt) {
 }
 
 // קריאה לשרת המשותף (Cloudflare Worker) - אין צורך במפתח משתמש.
-// ניסיון חוזר על שגיאות זמניות (5xx) - השרת עמוס לפעמים במכסה החינמית.
+// ניסיון חוזר על שגיאות זמניות (5xx) - השרת עמוס לפעמים.
 async function callHosted(path, body, retries = 1) {
   const res = await fetch(HOSTED_PROXY_URL + path, {
     method: 'POST',
@@ -868,7 +868,7 @@ async function groundAndUpdate(contextText, fastResults, title, lexicalSummary, 
       }
     };
 
-    // מודלים חינמיים (Gemini/Groq) מוגבלים בקצב - אימות טורי במקום פרץ מקבילי
+    // מודלים מסוימים (Gemini/Groq) מוגבלים בקצב - אימות טורי במקום פרץ מקבילי
     // שמפיל חצי מהבקשות על 429. במסלול Claude בתשלום נשארים מקביליים.
     let groundedAll;
     if (provider === 'anthropic') {

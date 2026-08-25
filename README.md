@@ -34,28 +34,28 @@
 
 בחלון התוסף מזינים:
 
-**ההתקנה הפשוטה ביותר - מפתח אחד בלבד:** מפתח Google AI חינמי (בלי כרטיס אשראי) עושה הכול - תמלול, זיהוי טענות, ואימות עם חיפוש Google. נכנסים ל-[aistudio.google.com/apikey](https://aistudio.google.com/apikey), מתחברים עם חשבון Google, לוחצים Create API Key, ומדביקים בחלון התוסף. זהו.
+**ההתקנה הפשוטה ביותר - מפתח אחד בלבד:** מפתח Google AI (בלי כרטיס אשראי) עושה הכול - תמלול, זיהוי טענות, ואימות עם חיפוש Google. נכנסים ל-[aistudio.google.com/apikey](https://aistudio.google.com/apikey), מתחברים עם חשבון Google, לוחצים Create API Key, ומדביקים בחלון התוסף. זהו.
 
 | מפתח | חובה? | תפקיד | השגה |
 |---|---|---|---|
-| Google AI (Gemini) | **מומלץ - מפתח אחד לכול** | תמלול + זיהוי טענות + אימות | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) - חינם |
-| Deepgram | רשות (שדרוג) | תמלול מקצועי בזמן אמת + זיהוי דוברים | [console.deepgram.com](https://console.deepgram.com/) - ~200$ קרדיט חינם |
-| Bright Data | רשות - **רק למודלי Groq** | חיפוש Google לראיות (SERP API) | [brightdata.com](https://brightdata.com/products/serp-api) - 5,000 חיפושים חינם בחודש |
+| Google AI (Gemini) | **מומלץ - מפתח אחד לכול** | תמלול + זיהוי טענות + אימות | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+| Deepgram | רשות (שדרוג) | תמלול מקצועי בזמן אמת + זיהוי דוברים | [console.deepgram.com](https://console.deepgram.com/) - ~200$ קרדיט |
+| Bright Data | רשות - **רק למודלי Groq** | חיפוש Google לראיות (SERP API) | [brightdata.com](https://brightdata.com/products/serp-api) - 5,000 חיפושים בחודש |
 
 בלי Deepgram, התמלול נעשה עם Gemini במקטעים של כ-15 שניות (לעומת תמלול חי ומיידי עם Deepgram, שכולל גם זיהוי דוברים קולי).
 
-**חיפוש הראיות:** במודלי Claude החיפוש נעשה עם כלי ה-web_search המובנה (כולל חסימת אתרים מוטים בצד השרת; בערך 1 סנט לחיפוש על המפתח שלכם). במודלי Gemini החיפוש נעשה עם Google Search grounding (כלול בחינם במכסת ה-free tier). רק במודלי Groq - שאין להם חיפוש מובנה - נדרש מפתח Bright Data; בלעדיו הפסיקות מתבססות על ידע המודל בלבד.
+**חיפוש הראיות:** במודלי Claude החיפוש נעשה עם כלי ה-web_search המובנה (כולל חסימת אתרים מוטים בצד השרת; בערך 1 סנט לחיפוש על המפתח שלכם). במודלי Gemini החיפוש נעשה עם Google Search grounding (כלול במכסת ה-free tier). רק במודלי Groq - שאין להם חיפוש מובנה - נדרש מפתח Bright Data; בלעדיו הפסיקות מתבססות על ידע המודל בלבד.
 
 **בחירת מודל שפה** - נדרש מפתח אחד בלבד, לפי המודל שנבחר:
 
 | מודל | עלות | מפתח | הערות |
 |---|---|---|---|
-| **Gemini 3.5 Flash-Lite (ברירת מחדל)** | **חינם** | [aistudio.google.com](https://aistudio.google.com/apikey) | מהיר, עם המכסה החינמית הגבוהה ביותר - מתאים לזמן אמת |
-| Gemini 3.5 Flash | **חינם** | aistudio.google.com | חכם יותר, מכסה נמוכה יותר |
-| Llama 3.3 70B / 3.1 8B (Groq) | **חינם** | [console.groq.com](https://console.groq.com/keys) | מהיר מאוד; עברית סבירה, פחות מדויק מ-Gemini |
+| **Gemini 3.5 Flash-Lite (ברירת מחדל)** | **מכסה יומית** | [aistudio.google.com](https://aistudio.google.com/apikey) | מהיר, עם המכסה הגבוהה ביותר - מתאים לזמן אמת |
+| Gemini 3.5 Flash | **מכסה יומית** | aistudio.google.com | חכם יותר, מכסה נמוכה יותר |
+| Llama 3.3 70B / 3.1 8B (Groq) | **מכסה יומית** | [console.groq.com](https://console.groq.com/keys) | מהיר מאוד; עברית סבירה, פחות מדויק מ-Gemini |
 | `claude-haiku-4-5` / `claude-sonnet-5` / `claude-opus-4-8` | בתשלום | [console.anthropic.com](https://console.anthropic.com/) | האיכות הגבוהה ביותר, כולל חסימת אתרים מוטים בחיפוש |
 
-שימו לב: במגבלות הקצב של המודלים החינמיים, בשידור עמוס טענות ייתכן שחלק מהחלונות ידולגו.
+שימו לב: במגבלות הקצב של המודלים, בשידור עמוס טענות ייתכן שחלק מהחלונות ידולגו.
 
 ## שימוש
 

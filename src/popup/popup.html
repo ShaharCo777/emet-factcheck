@@ -25,11 +25,11 @@
           <optgroup label="ברירת מחדל">
             <option value="hosted">שרת משותף - עובד מיד, ללא מפתח</option>
           </optgroup>
-          <optgroup label="מפתח משלכם - חינמיים">
-            <option value="gemini:gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite - חינם (Google)</option>
-            <option value="gemini:gemini-3.5-flash">Gemini 3.5 Flash - חינם (Google, חכם יותר)</option>
-            <option value="groq:openai/gpt-oss-120b">GPT-OSS 120B - חינם (Groq, חכם)</option>
-            <option value="groq:openai/gpt-oss-20b">GPT-OSS 20B - חינם (Groq, הכי מהיר)</option>
+          <optgroup label="מפתח משלכם">
+            <option value="gemini:gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite (Google)</option>
+            <option value="gemini:gemini-3.5-flash">Gemini 3.5 Flash (Google, חכם יותר)</option>
+            <option value="groq:openai/gpt-oss-120b">GPT-OSS 120B (Groq, חכם)</option>
+            <option value="groq:openai/gpt-oss-20b">GPT-OSS 20B (Groq, הכי מהיר)</option>
           </optgroup>
           <optgroup label="Claude (בתשלום)">
             <option value="claude-haiku-4-5">claude-haiku-4-5 (מהיר וזול)</option>
@@ -46,21 +46,21 @@
           <input class="key-input" id="anthropicKey" type="password" placeholder="sk-ant-..." autocomplete="off" dir="ltr"/>
         </div>
         <div class="key-field" id="geminiField" style="display:none">
-          <label class="key-label">מפתח Google AI (חינם)</label>
+          <label class="key-label">מפתח Google AI</label>
           <input class="key-input" id="geminiKey" type="password" placeholder="AIza..." autocomplete="off" dir="ltr"/>
-          <a class="key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">← קבלו מפתח חינם בלחיצה (חשבון Google)</a>
+          <a class="key-link" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">← קבלו מפתח בלחיצה (חשבון Google)</a>
         </div>
         <div class="key-field" id="groqField" style="display:none">
-          <label class="key-label">מפתח Groq (חינם)</label>
+          <label class="key-label">מפתח Groq</label>
           <input class="key-input" id="groqKey" type="password" placeholder="gsk_..." autocomplete="off" dir="ltr"/>
-          <a class="key-link" href="https://console.groq.com/keys" target="_blank" rel="noopener">← קבלו מפתח חינם</a>
+          <a class="key-link" href="https://console.groq.com/keys" target="_blank" rel="noopener">← קבלו מפתח</a>
         </div>
 
         <div class="section-label">🎙 תמלול</div>
         <div class="key-field" id="deepgramField">
-          <label class="key-label">השאירו ריק לתמלול עם Gemini (חינם), או הזינו מפתח Deepgram לתמלול חי מקצועי + זיהוי דוברים</label>
+          <label class="key-label">השאירו ריק לתמלול עם Gemini, או הזינו מפתח Deepgram לתמלול חי מקצועי + זיהוי דוברים</label>
           <input class="key-input" id="deepgramKey" type="password" placeholder="ריק = Gemini" autocomplete="off" dir="ltr"/>
-          <a class="key-link" href="https://console.deepgram.com/signup" target="_blank" rel="noopener">← מפתח Deepgram חינם (כ-200$ קרדיט)</a>
+          <a class="key-link" href="https://console.deepgram.com/signup" target="_blank" rel="noopener">← מפתח Deepgram (כ-200$ קרדיט)</a>
           <button class="backup-btn" id="dgTestBtn">🔎 בדיקת חיבור Deepgram</button>
         </div>
 

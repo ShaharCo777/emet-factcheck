@@ -41,21 +41,21 @@ function providerKeyEl() {
 
 let hostedKeyHelpUrl = 'https://aistudio.google.com/apikey';
 
-// מעדכן את הבאנר במצב מארח: כמה דקות חינם נותרו היום, או הסבר אם נגמרו
+// מעדכן את הבאנר במצב מארח: כמה דקות נותרו היום, או הסבר אם נגמרו
 function updateHostedBanner() {
   if (currentProvider() !== 'hosted') return;
   chrome.runtime.sendMessage({ type: 'GET_HOSTED_QUOTA' }, (q) => {
     if (!q || currentProvider() !== 'hosted') return;
     if (q.exhausted) {
-      hostedBanner.innerHTML = '🎉 סיימת את ' + Math.round(q.limitSec / 60) + ' הדקות החינמיות של היום.<br>' +
+      hostedBanner.innerHTML = '🎉 סיימת את ' + Math.round(q.limitSec / 60) + ' הדקות שלך להיום.<br>' +
         'להמשך ללא הגבלה: פתחו «הגדרות מתקדמות», בחרו Gemini והדביקו ' +
-        '<a href="' + hostedKeyHelpUrl + '" target="_blank" rel="noopener">מפתח חינמי</a>. או חזרו מחר.';
+        '<a href="' + hostedKeyHelpUrl + '" target="_blank" rel="noopener">מפתח</a>. או חזרו מחר.';
       hostedBanner.className = 'hosted-banner exhausted';
       advancedSection.open = true;
       toggleBtn.disabled = true;
     } else {
       const min = Math.max(1, Math.ceil(q.remainingSec / 60));
-      hostedBanner.innerHTML = '✓ מוכן לשימוש - לא צריך להזין כלום. נותרו ' + min + ' דקות חינם היום.';
+      hostedBanner.innerHTML = '✓ מוכן לשימוש - לא צריך להזין כלום. נותרו ' + min + ' דקות להיום.';
       hostedBanner.className = 'hosted-banner';
       toggleBtn.disabled = false;
     }

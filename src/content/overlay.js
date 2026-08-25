@@ -57,7 +57,7 @@ let transcriptCollapsed = false;
 const pendingCards     = new Map();
 const pendingCardTimes = new Map();
 
-// פקיעת כרטיסים ממתינים אחרי 4 דקות - האימות במודלים חינמיים רץ טורית,
+// פקיעת כרטיסים ממתינים אחרי 4 דקות - האימות רץ טורית,
 // ו-5 טענות בחלון אחד יכולות לקחת יותר מ-90 שניות
 setInterval(() => {
   const now = Date.now();
@@ -310,14 +310,14 @@ function showQuotaExplanation(keyHelpUrl, limitMin) {
   const card = document.createElement('div');
   card.className = 'emet-quota-card';
   card.innerHTML =
-    '<div class="emet-quota-title">🎉 סיימת את ' + limitMin + ' הדקות החינמיות של היום</div>' +
-    '<div class="emet-quota-text">כדי להמשיך עכשיו <b>בלי הגבלה</b>, הוסיפו מפתח Google AI חינמי משלכם (2 דקות, בלי כרטיס אשראי):</div>' +
+    '<div class="emet-quota-title">🎉 סיימת את ' + limitMin + ' הדקות שלך להיום</div>' +
+    '<div class="emet-quota-text">כדי להמשיך עכשיו <b>בלי הגבלה</b>, הוסיפו מפתח Google AI משלכם (2 דקות, בלי כרטיס אשראי):</div>' +
     '<ol class="emet-quota-steps">' +
       '<li>לחצו על אייקון התוסף בסרגל הכלים</li>' +
       '<li>פתחו את «⚙ הגדרות מתקדמות»</li>' +
       '<li>בחרו מודל Gemini והדביקו מפתח מ<a href="' + escapeHtml(keyHelpUrl) + '" target="_blank" rel="noopener">כאן</a></li>' +
     '</ol>' +
-    '<div class="emet-quota-text">או פשוט חזרו מחר ל-' + limitMin + ' דקות נוספות בחינם.</div>';
+    '<div class="emet-quota-text">או פשוט חזרו מחר ל-' + limitMin + ' דקות נוספות.</div>';
   body.insertBefore(card, body.firstChild);
   setStatusDot('warn');
   updateInterim('');
